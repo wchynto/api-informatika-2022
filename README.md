@@ -4,6 +4,6 @@ Project API biodata teknik informatika UTM angkatan 2022
 | Endpont           | Params | Description           |
 |:-----------------:|:------:|:---------------------:|
 | /mahasiswa        | -      | get all mahasiswa     |
-| /mahasiswa/nim/{nim}  | nim    | get mahasiswa by nim  |
-| /mahasiswa/nama/{nama} | nama   | get mahasiswa by name |
+| /mahasiswa/nim/ | nim    | get mahasiswa by nim  |
+| /mahasiswa/nama/ | nama   | get mahasiswa by name |
 | /mahasiswa/search/{keyword} | keyword   | get mahasiswa by keyword |
