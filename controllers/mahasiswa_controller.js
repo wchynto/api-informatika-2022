@@ -1,4 +1,5 @@
 const Mahasiswa = require("../models/mahasiswa_model");
+const { Op } = require("sequelize");
 
 const getAllMahasiswa = async (req, res) => {
   try {
@@ -11,7 +12,7 @@ const getAllMahasiswa = async (req, res) => {
 
 const getMahasiswaByNim = async (req, res) => {
   try {
-    const mahasiswa = await Mahasiswa.findOne({
+    const mahasiswa = await Mahasiswa.findAll({
       where: {
         nim: req.params.nim,
       },
@@ -24,13 +25,43 @@ const getMahasiswaByNim = async (req, res) => {
 
 const getMahasiswaByName = async (req, res) => {
   try {
-    const mahasiswa = await Mahasiswa.findOne({
+    const mahasiswa = await Mahasiswa.findAll({
       where: { nama: req.params.nama },
     });
-    res.send(nama);
+    res.send(mahasiswa);
   } catch (error) {
     console.log(error);
   }
 };
 
-module.exports = { getAllMahasiswa, getMahasiswaByNim, getMahasiswaByName };
+const getMahasiswaByKeyword = async (req, res) => {
+  try {
+    const keyword = req.params.keyword;
+    const mahasiswa = await Mahasiswa.findAll({
+      where: {
+        [Op.or]: [
+          {
+            nim: {
+              [Op.like]: "%" + keyword + "%",
+            },
+          },
+          {
+            nama: {
+              [Op.like]: "%" + keyword + "%",
+            },
+          },
+        ],
+      },
+    });
+    res.send(mahasiswa);
+  } catch (error) {
+    console.log(err);
+  }
+};
+
+module.exports = {
+  getAllMahasiswa,
+  getMahasiswaByNim,
+  getMahasiswaByName,
+  getMahasiswaByKeyword,
+};
