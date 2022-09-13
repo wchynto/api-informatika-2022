@@ -10,12 +10,10 @@ const getAllMahasiswa = async (req, res) => {
   }
 };
 
-const getMahasiswaByNim = async (req, res) => {
+const getMahasiswaByNimAsc = async (req, res) => {
   try {
     const mahasiswa = await Mahasiswa.findAll({
-      where: {
-        nim: req.params.nim,
-      },
+      order: [["id", "asc"]],
     });
     res.send(mahasiswa);
   } catch (error) {
@@ -23,10 +21,10 @@ const getMahasiswaByNim = async (req, res) => {
   }
 };
 
-const getMahasiswaByName = async (req, res) => {
+const getMahasiswaByNameAsc = async (req, res) => {
   try {
     const mahasiswa = await Mahasiswa.findAll({
-      where: { nama: req.params.nama },
+      order: [["nama", "asc"]],
     });
     res.send(mahasiswa);
   } catch (error) {
@@ -61,7 +59,7 @@ const getMahasiswaByKeyword = async (req, res) => {
 
 module.exports = {
   getAllMahasiswa,
-  getMahasiswaByNim,
-  getMahasiswaByName,
+  getMahasiswaByNimAsc,
+  getMahasiswaByNameAsc,
   getMahasiswaByKeyword,
 };

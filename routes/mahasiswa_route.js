@@ -2,16 +2,16 @@ const express = require("express");
 
 const {
   getAllMahasiswa,
-  getMahasiswaByNim,
-  getMahasiswaByName,
+  getMahasiswaByNimAsc,
+  getMahasiswaByNameAsc,
   getMahasiswaByKeyword,
 } = require("../controllers/mahasiswa_controller");
 
 const router = express.Router();
 
 router.get("/mahasiswa", getAllMahasiswa);
-router.get("/mahasiswa/nim/:nim", getMahasiswaByNim);
-router.get("/mahasiswa/nama/:nama", getMahasiswaByName);
+router.get("/mahasiswa/nim", getMahasiswaByNimAsc);
+router.get("/mahasiswa/nama", getMahasiswaByNameAsc);
 router.get("/mahasiswa/search/:keyword", getMahasiswaByKeyword);
 
 module.exports = router;
