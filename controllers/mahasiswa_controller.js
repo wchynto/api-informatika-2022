@@ -21,7 +21,7 @@ const getMahasiswaByNimAsc = async (req, res) => {
   }
 };
 
-const getMahasiswaByNameAsc = async (req, res) => {
+const getMahasiswaByNamaAsc = async (req, res) => {
   try {
     const mahasiswa = await Mahasiswa.findAll({
       order: [["nama", "asc"]],
@@ -60,6 +60,6 @@ const getMahasiswaByKeyword = async (req, res) => {
 module.exports = {
   getAllMahasiswa,
   getMahasiswaByNimAsc,
-  getMahasiswaByNameAsc,
+  getMahasiswaByNamaAsc,
   getMahasiswaByKeyword,
 };
