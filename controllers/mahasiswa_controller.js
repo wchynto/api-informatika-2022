@@ -11,7 +11,13 @@ const getAllMahasiswa = async (req, res) => {
 
 const getMahasiswaByKeyword = async (req, res) => {
   try {
-    const mahasiswa = await Mahasiswa.find();
+    const search = req.params.keyword;
+    const mahasiswa = await Mahasiswa.find({
+      $or: [
+        { name: { $regex: ".*" + search + ".*", $option: "i" } },
+        { nim: { $regex: ".*" + search + ".*", $option: "i" } },
+      ],
+    });
     res.json(mahasiswa);
   } catch (error) {
     console.log(error);
