@@ -1,5 +1,4 @@
-
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const Mahasiswa = new mongoose.Schema({
   nama: {
@@ -15,7 +14,7 @@ const Mahasiswa = new mongoose.Schema({
     required: true,
   },
   tanggal_lahir: {
-    type: Date,
+    type: String,
     required: true,
   },
   no_telpon: {
