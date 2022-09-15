@@ -1,40 +1,35 @@
-const Sequelize = require("sequelize").Sequelize;
 
-const db = require('../confiig/database')
+const mongoose = require('mongoose')
 
-const { DataTypes } = Sequelize;
-
-const Mahasiswa = db.define(
-  "mahasiswa",
-  {
-    nama: {
-      type: DataTypes.STRING,
-    },
-    nim: {
-      type: DataTypes.INTEGER,
-    },
-    tempat_lahir: {
-      type: DataTypes.STRING,
-    },
-    tanggal_lahir: {
-      type: DataTypes.DATEONLY,
-    },
-    alamat: {
-      type: DataTypes.STRING,
-    },
-    no_telpon: {
-      type: DataTypes.STRING,
-    },
-    email: {
-      type: DataTypes.STRING,
-    },
-    image: {
-      type: DataTypes.STRING
-    }
+const Mahasiswa = new mongoose.Schema({
+  nama: {
+    type: String,
+    required: true,
   },
-  {
-    freezeTableName: true,
-  }
-);
+  nim: {
+    type: Number,
+    required: true,
+  },
+  tempat_lahir: {
+    type: String,
+    required: true,
+  },
+  tanggal_lahir: {
+    type: Date,
+    required: true,
+  },
+  no_telpon: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+});
 
-module.exports = Mahasiswa;
+module.exports = mongoose.model("mahasiswa", Mahasiswa);
