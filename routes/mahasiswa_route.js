@@ -9,7 +9,8 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.json({
-    message: "Selamat datang persaudaraan teknik informatika angkatan 2022",
+    message:
+      "Selamat datang persaudaraan teknik informatika Universitas Trunojoyo Madura angkatan 2022",
     created_by: "wchynto.dev",
   });
 });

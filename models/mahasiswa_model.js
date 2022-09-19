@@ -6,7 +6,7 @@ const Mahasiswa = new mongoose.Schema({
     required: true,
   },
   nim: {
-    type: Number,
+    type: String,
     required: true,
   },
   tempat_lahir: {
